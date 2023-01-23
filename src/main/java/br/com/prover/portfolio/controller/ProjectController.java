@@ -30,12 +30,31 @@ public class ProjectController {
 	@Autowired
 	private PeopleService peopleService;
 	
+	@RequestMapping("/")
+	public String showList(ModelMap model, HttpServletRequest request) {
+				
+		List<Project> proj = this.service.getAllProjects();
+		
+		List<ProjectDTO> projects = new ArrayList<ProjectDTO>();
+		
+		for (int i = 0; i < proj.size(); i++) {			
+			ProjectDTO p = new ProjectDTO();			
+			p = p.convertToDTO(proj.get(i));			
+			projects.add(p);
+		}
+	    		
+		request.getAttribute("projects");		
+	    model.addAttribute("projects", projects);
+	     
+	    return "project_list";
+	}
+	
 	@RequestMapping("/projectform")
 	public String showForm(ModelMap model) {
 		ProjectDTO project = new ProjectDTO();
 	    List<String> riskList = Arrays.asList("baixo", "medio", "alto");
 	    List<String> statusList = Arrays.asList("em analise", " analise realizada", "analise aprovada", "iniciado", "planejado", "em andamento", "encerrado", "cancelado");
-	    List<People> managerList = peopleService.getOnlyEmployee();
+	    List<People> managerList = peopleService.getPeopleByRole("gerente");
 	     
 	    model.addAttribute("project", project);
 	    model.addAttribute("riskList", riskList);
@@ -51,31 +70,9 @@ public class ProjectController {
 	     
 	    Project project = this.service.insertProject(proj);
 	    	     
-	    return "project_register_success";
+	    return "redirect:/";
 	}
 	
-	@RequestMapping("/projectlist")
-	public String showList(ModelMap model, HttpServletRequest request) {
-				
-		List<Project> proj = this.service.getAllProjects();
-		
-		List<ProjectDTO> projects = new ArrayList<ProjectDTO>();
-		
-		for (int i = 0; i < proj.size(); i++) {
-			
-			ProjectDTO p = new ProjectDTO();
-			
-			p = p.convertToDTO(proj.get(i));
-			
-			projects.add(p);
-		}
-	    		
-		request.getAttribute("projects");
-		
-	    model.addAttribute("projects", projects);
-	     
-	    return "project_list";
-	}
 	
 	@RequestMapping("/projectedit")
 	public String showEditForm(Model model, HttpServletRequest request) {
@@ -84,7 +81,7 @@ public class ProjectController {
 		Project project = this.service.getProjectsById(id);
 	    List<String> riskList = Arrays.asList("baixo", "medio", "alto");
 	    List<String> statusList = Arrays.asList("em analise", " analise realizada", "analise aprovada", "iniciado", "planejado", "em andamento", "encerrado", "cancelado");
-	    List<People> managerList = peopleService.getOnlyEmployee();
+	    List<People> managerList = peopleService.getPeopleByRole("gerente");
 	     
 	    model.addAttribute("project", project);
 	    model.addAttribute("riskList", riskList);
@@ -99,7 +96,7 @@ public class ProjectController {
 	     
 	    Project project = this.service.updateProject(proj);
 	     
-	    return "project_register_success";
+	    return "redirect:/";
 	}
 	
 	@RequestMapping("/projectdelete")
@@ -109,7 +106,7 @@ public class ProjectController {
 		Project project = this.service.getProjectsById(id);
 	    List<String> riskList = Arrays.asList("baixo", "medio", "alto");
 	    List<String> statusList = Arrays.asList("em analise", " analise realizada", "analise aprovada", "iniciado", "planejado", "em andamento", "encerrado", "cancelado");
-	    List<People> managerList = peopleService.getOnlyEmployee();
+	    List<People> managerList = peopleService.getPeopleByRole("gerente");
 	     
 	    model.addAttribute("project", project);
 	    model.addAttribute("riskList", riskList);
@@ -124,7 +121,7 @@ public class ProjectController {
 	     
 	    String project = this.service.deleteProject(proj);
 	    
-	    return "index";
+	    return "redirect:/";
 	}
 	
 }

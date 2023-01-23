@@ -36,4 +36,13 @@ public class PeopleService {
 		
 		return people;
 	}
+	
+	public List<People> getPeopleByRole(String role) {
+		
+		List<People> people = repository.findByRole(role);
+		
+		people.removeIf(p -> (!p.getRole().equalsIgnoreCase(role)));
+		
+		return people;
+	}
 }

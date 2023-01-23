@@ -35,11 +35,13 @@ public class ProjectService {
 	public Project insertProject(ProjectDTO proj) {
 		
 		Project project = new Project();
-		List<People> people = getListPeopleById(proj.getPeople());
+		Optional<People> manager = peopleRepository.findById(Integer.valueOf(proj.getManager()));
+		project.setManager(manager.get());
+		/*List<People> people = getListPeopleById(proj.getManager());
 		if(!people.isEmpty()) {
 			Set<People> peopleSet = new HashSet<People>(people);
 			project.setPeople(peopleSet);
-		}
+		}*/
 		
 		project.setName(proj.getName());
 		project.setDescription(proj.getDescription());
@@ -60,7 +62,7 @@ public class ProjectService {
 		
 		Optional<Project> project = repository.findById(proj.getProjectId());
 		
-		project.get().setPeople(validPeopleList(proj.getPeople(), project.get().getPeople()));		
+		//project.get().setPeople(validPeopleList(proj.getPeople(), project.get().getPeople()));		
 		project.get().setName(proj.getName());
 		project.get().setDescription(proj.getDescription());
 		project.get().setStartDate(proj.getStartDate());

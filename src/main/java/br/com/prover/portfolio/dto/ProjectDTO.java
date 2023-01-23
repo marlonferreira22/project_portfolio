@@ -20,6 +20,7 @@ public class ProjectDTO {
 	private Float budget;
 	private String risk;
 	private String people;
+	private String manager;
 	
 	public ProjectDTO convertToDTO(Project proj) {
 		
