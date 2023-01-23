@@ -28,8 +28,8 @@ Exemplo do corpo da requisição (body): <br/>
 	"role": "funcionario"
 }
 <br/>
-<b>OBS:</b>
-Para que a lista de gerentes seja preenchida, é necessário o cadastro de uma nova pessoa com a role = "gerente". Segue exemplo:
+<b>OBS:</b> <br/>
+Para que a lista de gerentes seja preenchida, é necessário o cadastro de uma nova pessoa com a role = "gerente". Segue exemplo: <br/>
 {
 	"name": "Maria da Silva",
 	"role": "gerente"
