@@ -70,8 +70,8 @@ class ProjectServiceTest extends ApplicationConfigTest{
 	public void shouldBeAble_ToCreateANewProject() {
 		
 		ProjectDTO pp = createProjectDTO();	
-				
-		Mockito.when(peopleRepository.findByPeopleId(anyInt())).thenReturn(createPeople());
+		Optional<People> peopleOpt = Optional.of(createManager());		
+		Mockito.when(peopleRepository.findById(anyInt())).thenReturn(peopleOpt);
 
 		service.insertProject(pp);
 		
@@ -145,7 +145,7 @@ class ProjectServiceTest extends ApplicationConfigTest{
 				
 		Mockito.when(peopleRepository.findByPeopleId(anyInt())).thenReturn(createPeople());
 		
-		List<People> response = service.getListPeopleById("1");
+		List<People> response = service.getListMemberById("1");
 		
 		Assertions.assertNotNull(response);
 		Assertions.assertEquals(People.class, response.get(0).getClass());
@@ -167,7 +167,7 @@ class ProjectServiceTest extends ApplicationConfigTest{
 		project.setStatus("iniciado");
 		project.setBudget((float) 1000.0);
 		project.setRisk("medio");
-		project.setPeople("1");
+		project.setManager("1");
 		
 		return project;
 	}
@@ -187,7 +187,7 @@ class ProjectServiceTest extends ApplicationConfigTest{
 		project.setStatus("iniciado");
 		project.setBudget((float) 1000.0);
 		project.setRisk("medio");
-		project.setPeople(people);
+		//project.setPeople(people);
 		
 		return project;
 	}
@@ -207,7 +207,7 @@ class ProjectServiceTest extends ApplicationConfigTest{
 		project.setStatus("iniciado");
 		project.setBudget((float) 1000.0);
 		project.setRisk("alto");
-		project.setPeople(people);
+		//project.setPeople(people);
 		
 		return project;
 	}
@@ -227,7 +227,7 @@ class ProjectServiceTest extends ApplicationConfigTest{
 		project.setStatus("em analise");
 		project.setBudget((float) 1000.0);
 		project.setRisk("medio");
-		project.setPeople(people);
+		//project.setPeople(people);
 		
 		return project;
 	}
@@ -248,7 +248,7 @@ class ProjectServiceTest extends ApplicationConfigTest{
 		project.setStatus("iniciado");
 		project.setBudget((float) 1000.0);
 		project.setRisk("medio");
-		project.setPeople(people);
+		//project.setPeople(people);
 		
 		Project project2 = new Project();
 		Set<People> people2 = createPeopleSetList();		
@@ -261,7 +261,7 @@ class ProjectServiceTest extends ApplicationConfigTest{
 		project2.setStatus("em analise");
 		project2.setBudget((float) 1000.0);
 		project2.setRisk("baixo");
-		project2.setPeople(people2);
+		//project2.setPeople(people2);
 		
 		Project project3 = new Project();
 		Set<People> people3 = createPeopleSet();		
@@ -274,7 +274,7 @@ class ProjectServiceTest extends ApplicationConfigTest{
 		project3.setStatus("planejado");
 		project3.setBudget((float) 1000.0);
 		project3.setRisk("alto");
-		project3.setPeople(people3);
+		//project3.setPeople(people3);
 		
 		projectList.add(project);
 		projectList.add(project2);
@@ -328,6 +328,16 @@ class ProjectServiceTest extends ApplicationConfigTest{
 		people.setPeopleId(1);
 		people.setName("People Name Test");
 		people.setRole("funcionario");
+		
+		return people;
+	}
+	
+	private People createManager() {
+		
+		People people = new People();	
+		people.setPeopleId(1);
+		people.setName("People Name Test");
+		people.setRole("gerente");
 		
 		return people;
 	}
