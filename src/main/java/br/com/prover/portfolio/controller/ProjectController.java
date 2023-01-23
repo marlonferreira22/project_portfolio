@@ -68,7 +68,7 @@ public class ProjectController {
 	public String submitForm(@ModelAttribute("project") ProjectDTO proj, BindingResult result,
             ModelMap model) {
 	     
-	    Project project = this.service.insertProject(proj);
+	    this.service.insertProject(proj);
 	    	     
 	    return "redirect:/";
 	}
@@ -94,7 +94,7 @@ public class ProjectController {
 	@PostMapping("/projectupdate")
 	public String submitEditForm(@ModelAttribute("project") Project proj) {
 	     
-	    Project project = this.service.updateProject(proj);
+	    this.service.updateProject(proj);
 	     
 	    return "redirect:/";
 	}
@@ -119,7 +119,7 @@ public class ProjectController {
 	@PostMapping("/projectexclude")
 	public String submitExcludeForm(@ModelAttribute("project") Project proj) {
 	     
-	    String project = this.service.deleteProject(proj);
+	    this.service.deleteProject(proj);
 	    
 	    return "redirect:/";
 	}

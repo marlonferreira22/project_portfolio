@@ -31,7 +31,6 @@
             <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
               <li><a href="/" class="nav-link px-2 link-secondary">Home</a></li>
               <li><a href="/projectform" class="nav-link px-2 link-dark">Cadastrar Projeto</a></li>
-              <li><a href="home.html" class="nav-link px-2 link-dark">Assossiar Membro</a></li>
             </ul>
     
           </div>
@@ -79,8 +78,7 @@
 	                                <!-- <td class="pt-3">Alice Oliveira</td> -->
 	                                <td class="pt-3">${listValue.budget}</td>
 	                                <td class="pt-3">${listValue.risk}</td>
-	                                <td class="pt-3">${listValue.status}</td>
-	                                <td class="pt-3"><a href="#switchStatus" data-bs-toggle="modal" data-bs-target="#switchStatus" data-bs-whatever="${listValue.status}"> <span class="fa fa-exchange"></span></a></td>
+	                                <td class="pt-3">${listValue.status}</td>	                                
 	                                <td class="pt-3"><a href="/memberedit?id=<c:out value='${listValue.projectId}' />" ><span class="fa fa-user-plus"></span></a></td>
 	                                <td class="pt-3"><a href="/projectedit?id=<c:out value='${listValue.projectId}' />"><span class="fa fa-pencil"></span></a></td>
 	                                <td class="pt-3"><a href="/projectdelete?id=<c:out value='${listValue.projectId}' />"><span class="fa fa-trash-o"></span></a></td>

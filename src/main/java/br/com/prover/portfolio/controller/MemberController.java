@@ -1,6 +1,5 @@
 package br.com.prover.portfolio.controller;
 
-import java.util.Arrays;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -43,7 +42,7 @@ public class MemberController {
 	@PostMapping("/memberinsert")
 	public String submitEditForm(@ModelAttribute("project") ProjectDTO proj) {
 	     //System.out.println(proj.toString());
-	    Project project = projectService.insertMemberProject(proj);
+	    projectService.insertMemberProject(proj);
 	     
 	    return "redirect:/";
 	}

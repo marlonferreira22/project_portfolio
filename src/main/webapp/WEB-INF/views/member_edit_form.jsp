@@ -29,10 +29,8 @@
             </a>
     
             <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-              <li><a href="#" class="nav-link px-2 link-secondary">Home</a></li>
-              <li><a href="#" class="nav-link px-2 link-dark">Relatórios</a></li>
-              <li><a href="projetos.html" class="nav-link px-2 link-dark">Projetos</a></li>
-              <li><a href="#" class="nav-link px-2 link-dark">Configuração</a></li>
+              <li><a href="/" class="nav-link px-2 link-secondary">Home</a></li>
+              <li><a href="/projectform" class="nav-link px-2 link-dark">Cadastrar Projeto</a></li>
             </ul>
     
           </div>

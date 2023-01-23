@@ -29,10 +29,8 @@
             </a>
     
             <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-              <li><a href="#" class="nav-link px-2 link-secondary">Home</a></li>
-              <li><a href="#" class="nav-link px-2 link-dark">Relatórios</a></li>
-              <li><a href="projetos.html" class="nav-link px-2 link-dark">Projetos</a></li>
-              <li><a href="#" class="nav-link px-2 link-dark">Configuração</a></li>
+              <li><a href="/" class="nav-link px-2 link-secondary">Home</a></li>
+              <li><a href="/projectform" class="nav-link px-2 link-dark">Cadastrar Projeto</a></li>
             </ul>
     
           </div>
@@ -57,7 +55,6 @@
 		    </div>
 	    </c:if>
     
-<!--     <div class="title-princial">CADASTRAR PROJETO</div> -->
     <br>
     <section class="container">
         <div class="form-control">
@@ -73,8 +70,7 @@
                                         <i class="fa fa-briefcase"></i>
                                     </span>
                                 </span>
-<%--                                 <form:input path="name" type="text" class="form-control" id="name" placeholder="Digite nome do projeto" required /> --%>
-                                <form:input path="name" type="text" class="form-control" id="name" placeholder="Digite nome do projeto" />
+                                <form:input path="name" type="text" class="form-control" id="name" placeholder="Digite nome do projeto" required="true"/>
                                 <div class="invalid-feedback">
                                     Por favor, insira um nome para o projeto.
                                 </div>
@@ -90,8 +86,7 @@
                                         <i class="fa fa-id-card-o"></i>
                                     </span>
                                 </span>
-<%--                                 <form:input path="manager" class="form-control" list="datalistOptions" id="manager" placeholder="Escolha o Gerente ..." required /> --%>
-                                <form:select path="manager" items="${managerList}" itemValue="peopleId" itemLabel="name" class="form-select" aria-label="Default select example" placeholder="Selecionar o gerente" />
+                                <form:select path="manager" items="${managerList}" itemValue="peopleId" itemLabel="name" class="form-select" aria-label="Default select example" placeholder="Selecionar o gerente" required="true"/>
                                 <div class="invalid-feedback">
                                     Por favor, selecione um gerente.
                                 </div>
@@ -104,13 +99,12 @@
                     <div class="col-md-4 col-xs-4">
                         <form:label path="startDate" for="startDate" class="form-label">Data Início</form:label>
                         <div class="input-group date" id="datepicker">
-<%--                             <form:input path="startDate" type="text" class="form-control"  required /> --%>
                             <span class="input-group-append">
                                 <span class="input-group-text bg-white d-block">
                                     <i class="fa fa-calendar"></i>
                                 </span>
                             </span>
-                             <form:input path="startDate" type="text" class="form-control" />
+                             <form:input path="startDate" type="text" class="form-control" required="true"/>
                             <div class="invalid-feedback">
                                 Por favor, insira uma data de início.
                             </div>
@@ -119,13 +113,12 @@
                     <div class="col-md-4 col-xs-4">
                         <form:label path="endPrevisionDate" for="endPrevisionDate" class="form-label">Data Previsão Término</form:label>
                         <div class="input-group date" id="datepicker1">
-<%--                             <form:input path="endPrevisionDate" type="text" class="form-control"  required /> --%>
                             <span class="input-group-append">
                                 <span class="input-group-text bg-white d-block">
                                     <i class="fa fa-calendar"></i>
                                 </span>
                             </span>
-                            <form:input path="endPrevisionDate" type="text" class="form-control" />
+                            <form:input path="endPrevisionDate" type="text" class="form-control" required="true"/>
                             <div class="invalid-feedback">
                                 Por favor, insira uma data de previsão de Término.
                             </div>
@@ -134,13 +127,12 @@
                     <div class="col-md-4 col-xs-4">
                         <form:label path="endDate" for="endDate" class="form-label">Data Término</form:label>
                         <div class="input-group date" id="datepicker2">
-<%--                             <form:input path="endDate" type="text" class="form-control"  required /> --%>
                             <span class="input-group-append">
                                 <span class="input-group-text bg-white d-block">
                                     <i class="fa fa-calendar"></i>
                                 </span>
                             </span>
-							<form:input path="endDate" type="text" class="form-control" />
+							<form:input path="endDate" type="text" class="form-control" required="true" />
                             <div class="invalid-feedback">
                                 Por favor, insira uma data de término.
                             </div>
@@ -158,7 +150,6 @@
                                         <i class="fa fa-exclamation-triangle"></i>
                                     </span>
                                 </span>
-<%--                                 	<form:select path="status" items="${statusList}" class="form-select" aria-label="Default select example" placeholder="Selecionar o status" required /> --%>
 									<form:select path="status" items="${statusList}" class="form-select" aria-label="Default select example" placeholder="Selecionar o status" />
                                 <div class="invalid-feedback">
                                     Por favor, selecione o status do projeto.
@@ -175,7 +166,7 @@
                                         <i class="fa fa-money"></i>
                                     </span>
                                 </span>
-                                <form:input path="budget" type="text" id="budget"  class ="form-control" name="budget"  placeholder="Orçamento do projeto" />
+                                <form:input path="budget" type="text" id="budget"  class ="form-control" name="budget"  placeholder="Orçamento do projeto" required="true"/>
                                 <div class="invalid-feedback">
                                     Por favor, insira o orçamento do projeto.
                                 </div>
@@ -205,8 +196,7 @@
                     <div class="col-md-12 col-xs-12">
                         <form:label path="description" for="description" class="form-label">Descrição do projeto</form:label>
                         <div class="form-floating">
-<%--                             <form:textarea path="description" class="form-control" id="description" style="height: 150px" required></form:textarea> --%>
-                            <form:textarea path="description" class="form-control" id="description" style="height: 150px"></form:textarea>
+                            <form:textarea path="description" class="form-control" id="description" style="height: 150px" required="true"></form:textarea>
                             <div class="invalid-feedback">
                                 Por favor, insira uma descrição para o projeto.
                             </div>
