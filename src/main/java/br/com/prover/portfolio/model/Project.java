@@ -55,7 +55,10 @@ public class Project implements Serializable{
 	@ManyToOne
 	private People manager;
 	
-	/*@ManyToMany(fetch = FetchType.EAGER)
+	@ManyToMany
+	private Set<Member> member = new HashSet<Member>();
+	
+	/*@ManyToMany
 	private Set<People> people = new HashSet<People>();*/
 	
 

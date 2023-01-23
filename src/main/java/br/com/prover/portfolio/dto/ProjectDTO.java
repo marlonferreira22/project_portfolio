@@ -21,6 +21,7 @@ public class ProjectDTO {
 	private String risk;
 	private String people;
 	private String manager;
+	private String member;
 	
 	public ProjectDTO convertToDTO(Project proj) {
 		

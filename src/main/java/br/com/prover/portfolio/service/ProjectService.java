@@ -11,8 +11,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.com.prover.portfolio.dto.ProjectDTO;
+import br.com.prover.portfolio.model.Member;
 import br.com.prover.portfolio.model.People;
 import br.com.prover.portfolio.model.Project;
+import br.com.prover.portfolio.repository.MemberRepository;
 import br.com.prover.portfolio.repository.PeopleRepository;
 import br.com.prover.portfolio.repository.ProjectRepository;
 
@@ -24,6 +26,9 @@ public class ProjectService {
 	
 	@Autowired
 	private PeopleRepository peopleRepository;
+	
+	@Autowired
+	private MemberRepository memberRepository;
 
 	public List<Project> getAllProjects() {
 		
@@ -89,13 +94,34 @@ public class ProjectService {
 		
 		return message;
 	}
+	
+	public Project insertMemberProject(ProjectDTO proj) {
+		
+		Optional<Project> project = repository.findById(proj.getProjectId());
+		List<People> people = getListMemberById(proj.getMember());
+		List<Member> memberList = new ArrayList<>();
+		if(!people.isEmpty()) {
+			for (int i = 0; i < people.size(); i++) {
+				Member member = new Member();
+				member.setPeople(people.get(i));
+				Member mRet = memberRepository.save(member);
+				memberList.add(mRet);
+			}
+		Set<Member> memberSet = new HashSet<Member>(memberList);
+		project.get().setMember(memberSet);
+		}
+		
+		Project pReturn = repository.save(project.get());
+		
+		return pReturn;
+	}
 
 	public Project getProjectsById(int id) {
 		Optional<Project> project = repository.findByProjectId(id);
 		return project.get();
 	}
 	
-	public List<People> getListPeopleById(String p){
+	public List<People> getListMemberById(String p){
 		
 		List<People> pList = new ArrayList<People>();
 		

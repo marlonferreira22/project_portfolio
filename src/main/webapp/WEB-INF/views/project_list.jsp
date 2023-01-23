@@ -81,7 +81,7 @@
 	                                <td class="pt-3">${listValue.risk}</td>
 	                                <td class="pt-3">${listValue.status}</td>
 	                                <td class="pt-3"><a href="#switchStatus" data-bs-toggle="modal" data-bs-target="#switchStatus" data-bs-whatever="${listValue.status}"> <span class="fa fa-exchange"></span></a></td>
-	                                <td class="pt-3"><a  href="#includeMember" data-bs-toggle="modal" data-bs-target="#includeMember" ><span class="fa fa-user-plus"></span></a></td>
+	                                <td class="pt-3"><a href="/memberedit?id=<c:out value='${listValue.projectId}' />" ><span class="fa fa-user-plus"></span></a></td>
 	                                <td class="pt-3"><a href="/projectedit?id=<c:out value='${listValue.projectId}' />"><span class="fa fa-pencil"></span></a></td>
 	                                <td class="pt-3"><a href="/projectdelete?id=<c:out value='${listValue.projectId}' />"><span class="fa fa-trash-o"></span></a></td>
 	                            </tr>

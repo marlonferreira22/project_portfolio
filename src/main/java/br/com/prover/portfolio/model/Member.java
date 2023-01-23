@@ -17,21 +17,29 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "Peoples")
+@Table(name = "Member")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class People implements Serializable{
-
-	private static final long serialVersionUID = 1L;
-
-	@Id
-	@Column(name = "people_id")
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int peopleId;	
-	private String name;
-	private String role;
+public class Member implements Serializable{
 	
-	/*@ManyToMany
-	Set<Project> projects = new HashSet<Project>();*/
+	private static final long serialVersionUID = 1L;
+	
+	@Id
+	@Column(name = "member_id")
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private int memberId;
+	
+	/*@Column(name = "project_id")
+	private Project projectId;*/
+	
+	@ManyToMany
+	@Column(name = "project_id")
+	private Set<Project> project = new HashSet<Project>();
+	
+	@Column(name = "people_id")
+	private People people;
+	
+	
+
 }
