@@ -3,13 +3,13 @@
 Projeto desenvolvido utilizando as tecnologias:
 <li>Java 8</li>
 <li>Maven</li>
-
+<br/>
 <b>Frameworks:</b>
 <li>Spring Boot</li>
 <li>Hibernate</li>
 <li>Interface web com Bootstrap</li>
 <li>JUnit 5</li>
-
+<br/>
 <b>Banco de dados:</b>
 <li>Postgres</li>
 <li>H2Database</li>
